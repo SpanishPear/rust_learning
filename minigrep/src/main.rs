@@ -6,7 +6,7 @@ fn main() {
     let args: Vec<String> = env::args().collect();
 
     // cla's start at 0 with program name
-    let config: Config = parse_config(&args);
+    let config: Config = Config::new(&args);
 
     println!("Searching for {}", config.query);
     println!("In file {}", config.filename);
@@ -21,11 +21,14 @@ struct Config {
     filename: String
 }
 
-// why is this String and not str
-fn parse_config(args: &[String]) -> Config {
-    //let query = &args[1];
-    //let filename = &args[2];
-    // to copy strings into struct, we use clone (a la strcpy)
-    // means that config now owns the string
-    Config { query: args[1].clone(), filename: args[2].clone() }
+
+impl Config {
+    // why is this String and not str
+    fn new(args: &[String]) -> Config {
+        //let query = &args[1];
+        //let filename = &args[2];
+        // to copy strings into struct, we use clone (a la strcpy)
+        // means that config now owns the string
+        Config { query: args[1].clone(), filename: args[2].clone() }
+    }
 }
