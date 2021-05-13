@@ -3,6 +3,7 @@ use std::env;
 use std::process;
 
 use minigrep::Config;
+
 fn main() {
     // get env::args (a collection) and collect into an iterable of strings
     let args: Vec<String> = env::args().collect();
